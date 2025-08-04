@@ -1,0 +1,16 @@
+.pie-section {
+    margin-top: 40px;
+  }
+  
+  .pie-row {
+    display: flex;
+    justify-content: center; /* space-between / space-around でもOK */
+    gap: 40px; /* コンポーネント間の余白 */
+    margin-bottom: 30px;
+  }
+  
+  .pie-single {
+    display: flex;
+    justify-content: flex-start; /* ← 左寄せ */
+  }
+  
