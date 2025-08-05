@@ -9,7 +9,6 @@ import Pulldown from './conponents/Pulldown.jsx';
 import Pulldownweek from './conponents/Pulldownweek.jsx';
 import TextBox from './conponents/text.jsx';
 
-
 function App() {
   const [data, setData] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -36,7 +35,6 @@ function App() {
       setData(parsed.data);
       setLoading(false);
 
-      // adviceの取得と\n→半角スペース変換
       if (parsed.data && parsed.data.ai_advice && parsed.data.ai_advice.advice) {
         setAdviceText(parsed.data.ai_advice.advice.replace("\n", ' '));
       }
@@ -96,7 +94,7 @@ function App() {
 
           <div className="chart-block">
             <h3>月別課金額</h3>
-            <Pulldown onMonthChange={handleMonthChange} />
+            <Pulldown onMonthChange={handleMonthChange} selectedMonth={selectedMonth} />
             <PieChart1 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>
@@ -115,6 +113,7 @@ function App() {
 
           <div className="chart-block">
             <h3>ユーザー別課金額の割合</h3>
+            <Pulldown onMonthChange={handleMonthChange} selectedMonth={selectedMonth} />
             <PieChart2 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>
