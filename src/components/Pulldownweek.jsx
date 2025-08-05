@@ -16,7 +16,7 @@ export default function Pulldownweek() {
   };
 
   return (
-    <FormControl sx={{ minWidth: 200 }}>
+    <FormControl sx={{ minWidth: 200 }}size="small">
       <InputLabel id="week-interval-label">期間</InputLabel>
       <Select
         labelId="week-interval-label"
