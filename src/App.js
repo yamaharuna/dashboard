@@ -16,9 +16,10 @@ function App() {
   const [selectedWeek, setSelectedWeek] = useState('2week');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [adviceText, setAdviceText] = useState("読み込み中...");
 
   async function executeOpenAPI() {
-    const url = "https://fc67f7616da7.ngrok-free.app/open";
+    const url = "https://016983f94736.ngrok-free.app/open";
     console.log(`Executing request to: ${url}`);
     try {
       const response = await fetch(url, {
@@ -34,6 +35,11 @@ function App() {
       const parsed = JSON.parse(responseData);
       setData(parsed.data);
       setLoading(false);
+
+      // adviceの取得と\n→半角スペース変換
+      if (parsed.data && parsed.data.ai_advice && parsed.data.ai_advice.advice) {
+        setAdviceText(parsed.data.ai_advice.advice.replace("\n", ' '));
+      }
     } catch (err) {
       console.error("Request Error:", err.message);
       setError(err.message);
@@ -127,7 +133,7 @@ function App() {
 
       {/* === テキストセクション === */}
       <div className="section text-section">
-        <TextBox text="ここにマークダウン形式のテキストを入力してください。" />
+        <TextBox text={adviceText} />
       </div>
     </div>
   );
