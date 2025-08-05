@@ -18,7 +18,7 @@ function App() {
   const [error, setError] = useState(null);
 
   async function executeOpenAPI() {
-    const url = "https://fc67f7616da7.ngrok-free.app/open";
+    const url = "https://016983f94736.ngrok-free.app/open";
     console.log(`Executing request to: ${url}`);
     try {
       const response = await fetch(url, {
