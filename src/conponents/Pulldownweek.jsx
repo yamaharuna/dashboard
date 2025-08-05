@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
-export default function Pulldownweek() {
-  const [selectedValue, setSelectedValue] = useState('');
+export default function Pulldownweek({ setSelectedWeek }) {
+  const [selectedValue, setSelectedValue] = useState('2');
 
   const options = [
     { label: '2週間ごと', value: '2' },
-    { label: '4週間ごと', value: '4' },
-    { label: '6週間ごと', value: '6' },
-    { label: '8週間ごと', value: '8' },
+    { label: '1ヶ月ごと', value: '4' },
+    { label: '2ヶ月ごと', value: '8' },
+    { label: '3ヶ月ごと', value: '12' },
   ];
 
   const handleChange = (event) => {
-    setSelectedValue(event.target.value);
+    const newValue = event.target.value;
+    setSelectedValue(newValue);
+    setSelectedWeek(`${newValue}week`); // ← App に伝える
   };
 
   return (
@@ -33,12 +35,3 @@ export default function Pulldownweek() {
     </FormControl>
   );
 }
-
-
-
-
-
-
-
-
-
