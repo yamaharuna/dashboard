@@ -1,47 +1,43 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { MenuItem, Select, FormControl, InputLabel } from '@mui/material';
 
-export default function YearMonthDropdown({ onMonthChange }) {
-  // 今日の日付
+export default function YearMonthDropdown({ onMonthChange, selectedMonth }) {
   const today = new Date();
   const currentYear = today.getFullYear();
-  const currentMonth = today.getMonth() + 1; // 0-indexedなので+1
-  
-  // 最新の月を初期値として設定
+  const currentMonth = today.getMonth() + 1;
+
   const initialValue = `${currentYear}-${String(currentMonth).padStart(2, '0')}`;
-  const [selectedValue, setSelectedValue] = useState(initialValue);
-  
-  // 2024年1月〜現在の月までのリストを作成
+
+  // 初回マウント時に初期値を親に通知（初期選択されていない場合のみ）
+  useEffect(() => {
+    if (!selectedMonth && onMonthChange) {
+      onMonthChange(initialValue);
+    }
+  }, [selectedMonth, onMonthChange, initialValue]);
+
+  // 年月リスト作成
   const yearMonthList = [];
   for (let y = 2024; y <= currentYear; y++) {
-    const startMonth = y === 2024 ? 1 : 1;
+    const startMonth = 1;
     const endMonth = y === currentYear ? currentMonth : 12;
     for (let m = startMonth; m <= endMonth; m++) {
       yearMonthList.push({ year: y, month: m });
     }
   }
-  
-  // コンポーネントマウント時に初期値を親コンポーネントに渡す
-  useEffect(() => {
-    if (onMonthChange) {
-      onMonthChange(initialValue);
-    }
-  }, []); // 依存配列を空にして、マウント時にのみ実行
-  
+
   const handleChange = (event) => {
     const value = event.target.value;
-    setSelectedValue(value);
     if (onMonthChange) {
       onMonthChange(value);
     }
   };
-  
+
   return (
     <FormControl sx={{ minWidth: 200 }} size="small">
       <InputLabel id="year-month-label">年月</InputLabel>
       <Select
         labelId="year-month-label"
-        value={selectedValue}
+        value={selectedMonth || ''}
         label="年月"
         onChange={handleChange}
       >
@@ -57,17 +53,3 @@ export default function YearMonthDropdown({ onMonthChange }) {
     </FormControl>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
