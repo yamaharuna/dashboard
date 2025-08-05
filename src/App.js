@@ -5,28 +5,27 @@ import PieChart2 from './conponents/pieChart2';
 import PieChart3 from './conponents/pieChart3';
 import Pulldown from './conponents/Pulldown';
 
-
 function App() {
   return (
     <div className="App">
-      <h2>Line Chart</h2>
+      <h2>ユーザー別課金額の変化</h2>
       <LineChart />
 
-     
+      <Pulldown />
 
-<Pulldown />
-<div className="pie-row">
-<h2>Pie Charts</h2>
-  <PieChart1 />
-  <h2>Pie Charts</h2>
-  <PieChart2 />
-  </div>
-  <div className="pie-single">
-  <h2>Pie Charts</h2>
-  <PieChart3 />
-  </div>
-  
-</div>
+      
+      <div className="pie-row">
+      <h2>月別課金額の割合</h2>
+        <PieChart1 />
+      <h2>ユーザー別課金額の割合</h2>
+        <PieChart2 />
+      </div>
+
+      <h2>離脱の割合</h2>
+      <div className="pie-single">
+        <PieChart3 />
+      </div>
+    </div>
   );
 }
 
