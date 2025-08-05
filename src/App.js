@@ -1,12 +1,12 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import LineChart from './conponents2/lineChart.jsx';
-import LineChart2 from './conponents2/lineChart2.js';
-import PieChart1 from './conponents2/BarChart1.js';
-import PieChart2 from './conponents2/pieChart2.js';
-import PieChart3 from './conponents2/pieChart3.js';
-import Pulldown from './conponents2/Pulldown.js';
-import Pulldownweek from './conponents2/Pulldownweek.js';
+import LineChart from './conponents/lineChart.jsx';
+import LineChart2 from './conponents/lineChart2.jsx';
+import PieChart1 from './conponents/BarChart1.jsx';
+import PieChart2 from './conponents/pieChart2.jsx';
+import PieChart3 from './conponents/pieChart3.jsx';
+import Pulldown from './conponents/Pulldown.jsx';
+import Pulldownweek from './conponents/Pulldownweek.jsx';
 import TextBox from './conponents/text.jsx';
 
 
