@@ -37,7 +37,7 @@ export default function YearMonthDropdown({ onMonthChange }) {
   };
   
   return (
-    <FormControl sx={{ minWidth: 200 }}>
+    <FormControl sx={{ minWidth: 200 }} size="small">
       <InputLabel id="year-month-label">年月</InputLabel>
       <Select
         labelId="year-month-label"

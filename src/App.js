@@ -1,12 +1,14 @@
 import './App.css';
 import { useState, useEffect } from 'react';
-import LineChart from './conponents/lineChart';
-import LineChart2 from './conponents/lineChart2';
-import PieChart1 from './conponents/BarChart1';
-import PieChart2 from './conponents/pieChart2';
-import PieChart3 from './conponents/pieChart3.jsx';
-import Pulldown from './conponents/Pulldown';
-import Pulldownweek from './conponents/Pulldownweek';
+import LineChart from './conponents2/lineChart.jsx';
+import LineChart2 from './conponents2/lineChart2.js';
+import PieChart1 from './conponents2/BarChart1.js';
+import PieChart2 from './conponents2/pieChart2.js';
+import PieChart3 from './conponents2/pieChart3.js';
+import Pulldown from './conponents2/Pulldown.js';
+import Pulldownweek from './conponents2/Pulldownweek.js';
+import TextBox from './conponents/text.jsx';
+
 
 function App() {
   const [data, setData] = useState(null);
@@ -75,33 +77,57 @@ function App() {
 
   return (
     <div className="App">
-      <div className="top-section">
-        <div className="left-charts">
-          <h2>ユーザー分類別人数の変化</h2>
-          <div style={{ width: '600px' }}>
-            <LineChart data={data.transformHL} />
+      {/* === セクション1 === */}
+      <div className="section-wrapper">
+        <h2>人数の推移と分布</h2>
+        <div className="section">
+          <div className="chart-block">
+            <h3>ユーザー数の推移</h3>
+            <div style={{ width: '400px' }}>
+              <LineChart data={data.transformHL} />
+            </div>
           </div>
 
-          <h2>ユーザー分類別課金額の変化</h2>
-          <div style={{ width: '600px' }}>
-            <LineChart2 data={data.transformHL} />
+          <div className="chart-block">
+            <h3>月別課金額</h3>
+            <Pulldown onMonthChange={handleMonthChange} />
+            <PieChart1 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
-        </div>
-
-        <div className="right-charts">
-          <h2>月別課金額</h2>
-          <Pulldown onMonthChange={handleMonthChange} />
-          <PieChart1 data={data.transformHL} selectedMonth={selectedMonth} />
-
-          <h2>ユーザー別課金額の割合</h2>
-          <PieChart2 data={data.transformHL} selectedMonth={selectedMonth} />
         </div>
       </div>
 
-      <h2>離脱の割合</h2>
-      <div className="pie-single">
-        <Pulldownweek setSelectedWeek={setSelectedWeek} />
-        <PieChart3 data={data.transformR} selectedWeek={selectedWeek} />
+      {/* === セクション2 === */}
+      <div className="section-wrapper">
+        <h2>課金額の推移と分布</h2>
+        <div className="section">
+          <div className="chart-block">
+            <h3>ユーザー分類別課金額の変化</h3>
+            <div style={{ width: '400px' }}>
+              <LineChart2 data={data.transformHL} />
+            </div>
+          </div>
+
+          <div className="chart-block">
+            <h3>ユーザー別課金額の割合</h3>
+            <PieChart2 data={data.transformHL} selectedMonth={selectedMonth} />
+          </div>
+        </div>
+      </div>
+
+      {/* === セクション3 === */}
+      <div className="section-wrapper">
+        <h2>最終課金日からの期間割合</h2>
+        <div className="section">
+          <Pulldownweek setSelectedWeek={setSelectedWeek} />
+          <div className="pie-single">
+            <PieChart3 data={data.transformR} selectedWeek={selectedWeek} />
+          </div>
+        </div>
+      </div>
+
+      {/* === テキストセクション === */}
+      <div className="section text-section">
+        <TextBox text="ここにマークダウン形式のテキストを入力してください。" />
       </div>
     </div>
   );

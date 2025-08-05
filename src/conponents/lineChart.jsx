@@ -1,60 +1,34 @@
 import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 
-export default function BasicLineChart({ data }) {
-  if (!data) {
-    return <div>データを読み込み中...</div>;
-  }
-
-  // 月順にソート
-  const sortedMonths = Object.keys(data).sort();
-
-  // 各カテゴリの count データ抽出
-  const superHeavyData = sortedMonths.map(month => data[month].super_heavy.count);
-  const heavyData = sortedMonths.map(month => data[month].heavy.count);
-  const lightData = sortedMonths.map(month => data[month].light.count);
-  const superLightData = sortedMonths.map(month => data[month].super_light.count);
-
-  // x軸ラベルを整形
-  const xAxisData = sortedMonths.map(month => {
-    const [year, monthNum] = month.split('-');
-    return `${year}年${monthNum}月`;
-  });
-
+export default function BasicLineChart() {
   return (
     <LineChart
-      xAxis={[{ 
-        data: xAxisData,
-        scaleType: 'band'
-      }]}
+      xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
       series={[
-        { 
-          curve: "linear", 
-          data: superHeavyData, 
-          label: 'Super Heavy',
-          color: '#ff4444'
+        {
+          curve: "linear",
+          data: [1, 5, 2, 6, 3, 9.3],
+          color: '#4A90E2', // 明るめのブルー
         },
-        { 
-          curve: "linear", 
-          data: heavyData, 
-          label: 'Heavy',
-          color: '#ff8800'
+        {
+          curve: "linear",
+          data: [6, 3, 7, 9.5, 4, 2],
+          color: '#0052CC', // 濃い青
         },
-        { 
-          curve: "linear", 
-          data: lightData, 
-          label: 'Light',
-          color: '#00aa00'
+        {
+          curve: "linear",
+          data: [2, 4, 6, 8, 10, 12],
+          color: '#50E3C2', // 青緑に近い（アクセント）
         },
-        { 
-          curve: "linear", 
-          data: superLightData, 
-          label: 'Super Light',
-          color: '#0088ff'
+        {
+          curve: "linear",
+          data: [3, 6, 9, 2, 5, 7],
+          color: '#003f5c', // 深いネイビーブルー
         },
       ]}
-      height={400}
-      width={800}
+      height={300}
     />
   );
 }
+
