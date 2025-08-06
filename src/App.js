@@ -18,7 +18,7 @@ function App() {
   const [adviceText, setAdviceText] = useState("読み込み中...");
 
   async function executeOpenAPI() {
-    const url = "https://016983f94736.ngrok-free.app/open";
+    const url = "https://39ecdc47170b.ngrok-free.app/open";
     console.log(`Executing request to: ${url}`);
     try {
       const response = await fetch(url, {
