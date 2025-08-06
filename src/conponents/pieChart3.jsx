@@ -11,9 +11,9 @@ export default function PieChart3({ data, selectedWeek }) {
   } else if (selectedWeek === '4week') {
     labels = ['0~1month', '1month~2month', '2month~3month', '3~4month'];
   } else if (selectedWeek === '8week') {
-    labels = ['0~2month', '2month~3month', '3month~4month', '4month~5month'];
+    labels = ['0~2month', '2month~4month', '4month~6month', '6month~8month'];
   } else if (selectedWeek === '12week') {
-    labels = ['0~3month', '3month~4month', '4month~5month', '5month~6month'];
+    labels = ['0~3month', '3month~6month', '6month~9month', '9month~1year'];
   } else {
     labels = Object.keys(weekData).map((key) => `カテゴリ ${key}`);
   }
@@ -37,8 +37,8 @@ export default function PieChart3({ data, selectedWeek }) {
   return (
     <PieChart
       series={[{ data: pieData }]}
-      width={400}
-      height={200}
+      width={240}
+      height={240}
     />
   );
 }
