@@ -35,8 +35,8 @@ export default function BasicPie({ data, selectedMonth }) {
           faded: { innerRadius: 30, additionalRadius: -30, color: 'gray' },
         },
       ]}
-      width={300}
-      height={300}
+      width={240}
+      height={240}
     />
   );
 }
