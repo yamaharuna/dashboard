@@ -80,6 +80,38 @@ function App() {
     );
   }
 
+  // transformHLからLineChart1用データを生成
+  function getLineChart1Data(transformHL) {
+    if (!transformHL) return [];
+    const userTypes = ['super_heavy', 'heavy', 'light', 'super_light'];
+    // 年月順にソート
+    const months = Object.keys(transformHL).sort();
+    // 各分類ごとに系列データを作成
+    const series = userTypes.map(type => ({
+      name: type,
+      data: months.map(month => ({
+        month,
+        count: transformHL[month][type]?.count ?? 0
+      }))
+    }));
+    return { months, series };
+  }
+
+  // transformHLからLineChart2用データを生成（priceを使う）
+  function getLineChart2Data(transformHL) {
+    if (!transformHL) return { months: [], series: [] };
+    const userTypes = ['super_heavy', 'heavy', 'light', 'super_light'];
+    const months = Object.keys(transformHL).sort();
+    const series = userTypes.map(type => ({
+      name: type,
+      data: months.map(month => ({
+        month,
+        price: transformHL[month][type]?.total ?? 0   // ← priceとしてtotalを使う
+      }))
+    }));
+    return { months, series };
+  }
+
   return (
     <div className="App">
       {/* === セクション1 === */}
@@ -88,13 +120,13 @@ function App() {
         <div className="section">
           <div className="chart-block">
             <h3>ユーザー数の推移</h3>
-            <div style={{ width: '400px' }}>
-              <LineChart data={data.transformHL} />
+            <div style={{ width: '600px' }}>
+              <LineChart data={getLineChart1Data(data.transformHL)} />
             </div>
           </div>
 
           <div className="chart-block">
-            <h3>月別課金額</h3>
+            <h3>月間課金額別人数</h3>
             <Pulldown onMonthChange={handleMonthChange} selectedMonth={selectedMonth} />
             <BarChart1 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
@@ -107,8 +139,8 @@ function App() {
         <div className="section">
           <div className="chart-block">
             <h3>ユーザー分類別課金額の変化</h3>
-            <div style={{ width: '400px' }}>
-              <LineChart2 data={data.transformHL} />
+            <div style={{ width: '600px' }}>
+              <LineChart2 data={getLineChart2Data(data.transformHL)} />
             </div>
           </div>
 
