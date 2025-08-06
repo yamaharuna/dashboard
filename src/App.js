@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import LineChart from './conponents/lineChart.jsx';
 import LineChart2 from './conponents/lineChart2.jsx';
-import PieChart1 from './conponents/BarChart1.jsx';
+import BarChart1 from './conponents/BarChart1.jsx';
 import PieChart2 from './conponents/pieChart2.jsx';
 import PieChart3 from './conponents/pieChart3.jsx';
 import Pulldown from './conponents/Pulldown.jsx';
@@ -18,7 +18,8 @@ function App() {
   const [adviceText, setAdviceText] = useState("読み込み中...");
 
   async function executeOpenAPI() {
-    const url = "https://fef9c3f796ab.ngrok-free.app/open";
+    const url = "https://aec9b34ea907.ngrok-free.app/open";
+
     console.log(`Executing request to: ${url}`);
     try {
       const response = await fetch(url, {
@@ -95,7 +96,7 @@ function App() {
           <div className="chart-block">
             <h3>月別課金額</h3>
             <Pulldown onMonthChange={handleMonthChange} selectedMonth={selectedMonth} />
-            <PieChart1 data={data.transformHL} selectedMonth={selectedMonth} />
+            <BarChart1 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>
       </div>
@@ -112,8 +113,11 @@ function App() {
           </div>
 
           <div className="chart-block">
+
             <h3>ユーザー別課金額の割合</h3>
             <Pulldown onMonthChange={handleMonthChange} selectedMonth={selectedMonth} />
+
+            
             <PieChart2 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>

@@ -19,10 +19,10 @@ export default function PieChart3({ data, selectedWeek }) {
   }
 
   const colorMap = {
-    '0': '#4A90E2',
-    '1': '#0052CC',
-    '2': '#50E3C2',
-    '3': '#003f5c',
+    '0': '#AECBFA',
+    '1': '#639DFF',
+    '2': '#2261E8',
+    '3': '#0B1D8B',
   };
 
   const pieData = Object.entries(weekData).map(([key, value], idx) => ({

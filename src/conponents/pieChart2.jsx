@@ -18,10 +18,10 @@ export default function BasicPie({ data, selectedMonth }) {
 
   const pieData = [
    
-    { id: 3, value: monthData.super_light.total, label: 'Super Light', color: '#4A90E2' },
-    { id: 2, value: monthData.light.total, label: 'Light', color: '#0052CC'},
-    { id: 1, value: monthData.heavy.total, label: 'Heavy', color:  '#50E3C2' },
-    { id: 0, value: monthData.super_heavy.total, label: 'Super Heavy', color: '#003f5c' }
+    { id: 3, value: monthData.super_light.total, label: 'Super Light', color: '#AECBFA' },
+    { id: 2, value: monthData.light.total, label: 'Light', color: '#639DFF'},
+    { id: 1, value: monthData.heavy.total, label: 'Heavy', color:  '#2261E8' },
+    { id: 0, value: monthData.super_heavy.total, label: 'Super Heavy', color: '#0B1D8B' }
    
     
   ];
