@@ -2,7 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import LineChart from './conponents/lineChart.jsx';
 import LineChart2 from './conponents/lineChart2.jsx';
-import PieChart1 from './conponents/BarChart1.jsx';
+import BarChart1 from './conponents/BarChart1.jsx';
 import PieChart2 from './conponents/pieChart2.jsx';
 import PieChart3 from './conponents/pieChart3.jsx';
 import Pulldown from './conponents/Pulldown.jsx';
@@ -18,7 +18,7 @@ function App() {
   const [error, setError] = useState(null);
 
   async function executeOpenAPI() {
-    const url = "https://016983f94736.ngrok-free.app/open";
+    const url = "https://39ecdc47170b.ngrok-free.app/open";
     console.log(`Executing request to: ${url}`);
     try {
       const response = await fetch(url, {
@@ -91,7 +91,7 @@ function App() {
           <div className="chart-block">
             <h3>月別課金額</h3>
             <Pulldown onMonthChange={handleMonthChange} />
-            <PieChart1 data={data.transformHL} selectedMonth={selectedMonth} />
+            <BarChart1 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>
       </div>
@@ -108,7 +108,7 @@ function App() {
           </div>
 
           <div className="chart-block">
-            <h3>ユーザー別課金額の割合</h3>
+            <h3>ユーザー分類別課金額の割合</h3>
             <PieChart2 data={data.transformHL} selectedMonth={selectedMonth} />
           </div>
         </div>
