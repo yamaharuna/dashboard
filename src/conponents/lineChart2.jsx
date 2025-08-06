@@ -1,33 +1,42 @@
 import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 
-export default function BasicLineChart() {
+
+export default function BasicLineChart({ data }) {
+  if (
+    !data ||
+    !Array.isArray(data.months) ||
+    !Array.isArray(data.series)
+  ) {
+    return <div>データがありません</div>;
+  }
+
+
+  const labelMap = {
+    super_light: 'Super Light',
+    light: 'Light',
+    heavy: 'Heavy',
+    super_heavy: 'Super Heavy',
+  };
+  const colorMap = {
+    super_light: '#AECBFA',
+    light: '#639DFF',
+    heavy: '#2261E8',
+    super_heavy: '#0B1D8B',
+  };
+const ser= data.series.map(s => ({
+  label: labelMap[s.name] ?? s.name,
+  curve: "linear",
+  data: s.data.map(d => d.price), // priceを使う
+  color: colorMap[s.name] ?? undefined,
+}));
+console.log("ser",ser);
+
   return (
     <LineChart
-      xAxis={[{ data: [1, 2, 3, 5, 8, 10] }]}
-      series={[
-        { label: 'Super Light',
-          curve: "linear",
-          data: [1, 5, 2, 6, 3, 9.3],
-          color: '#AECBFA', // パステル調の青（最も明るい）
-        },
-        { label: 'Light',
-          curve: "linear",
-          data: [6, 3, 7, 9.5, 4, 2],
-          color: '#639DFF', // 明るめのブルー
-        },
-        { label: 'Heavy',
-          curve: "linear",
-          data: [2, 4, 6, 8, 10, 12],
-          color: '#2261E8', // 鮮やかブルー
-        },
-        { label: 'Super Heavy',
-          curve: "linear",
-          data: [3, 6, 9, 2, 5, 7],
-          color: '#0B1D8B', // 濃くて重厚なネイビー
-        },
-        
-      ]}
+      xAxis={[{ scaleType: 'band', label: '月', data: data.months }]}
+      yAxis={[{ scaleType: 'linear', label: '課金額(円)' }]}
+      series={ser}
       height={300}
       width={600}
       legend={{ hidden: false }}
