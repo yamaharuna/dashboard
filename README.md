@@ -118,7 +118,7 @@
 
 ## 資料
 
-- [発表資料](./docs/プレゼン資料.pdf)
-- [実際のアプリ画面](./docs/capture.pdf) 
+- [発表資料](./docs/【Aチーム】27E_3daysIS ワークFMT_プレゼン資料.pdf)
+- [実際のアプリ画面](./docs/DG-Hakkason.pdf) 
 
 ---
