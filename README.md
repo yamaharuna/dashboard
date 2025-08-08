@@ -122,7 +122,7 @@
 
 ## 資料
 
-- [発表資料](./docs/teamA_presentation.pdf)
+- [発表資料](./docs/teamA_presentation.pdf.pdf)
 - [実際のアプリ画面](./docs/DG-Hakkason.pdf) 
 
 ---
