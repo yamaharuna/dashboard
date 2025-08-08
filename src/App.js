@@ -8,7 +8,7 @@ import PieChart3 from './conponents/pieChart3.jsx';
 import Pulldown from './conponents/Pulldown.jsx';
 import Pulldownweek from './conponents/Pulldownweek.jsx';
 import TextBox from './conponents/text.jsx';
-
+import Orders from "./orders.json"
 function App() {
   const [data, setData] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState('');
@@ -17,34 +17,25 @@ function App() {
   const [error, setError] = useState(null);
   const [adviceText, setAdviceText] = useState("読み込み中...");
 
-  async function executeOpenAPI() {
-    const url = "https://aec9b34ea907.ngrok-free.app/open";
+async function executeOpenAPI() {
+  try {
+    // 'Orders' is already a JavaScript object, no need to parse it.
+    const responseData = Orders;
+    console.log("Response Body:", responseData);
 
-    console.log(`Executing request to: ${url}`);
-    try {
-      const response = await fetch(url, {
-        headers: {
-          "ngrok-skip-browser-warning": "true",
-        }
-      });
-      const responseData = await response.text();
-      console.log("Status Code:", response.status);
-      console.log("Headers:", Object.fromEntries(response.headers));
-      console.log("Response Body:", responseData);
+    // Use 'responseData' directly.
+    setData(responseData.data);
+    setLoading(false);
 
-      const parsed = JSON.parse(responseData);
-      setData(parsed.data);
-      setLoading(false);
-
-      if (parsed.data && parsed.data.ai_advice && parsed.data.ai_advice.advice) {
-        setAdviceText(parsed.data.ai_advice.advice.replace("\n", ' '));
-      }
-    } catch (err) {
-      console.error("Request Error:", err.message);
-      setError(err.message);
-      setLoading(false);
+    if (responseData.data && responseData.data.ai_advice && responseData.data.ai_advice.advice) {
+      // Use a regex to replace *all* newlines, not just the first one.
+      setAdviceText(responseData.data.ai_advice.advice.replace("\n\n", '  '));
     }
+  } catch (err) { // This is the correct syntax for a catch block.
+    setError(err);
+    setLoading(false); // Also good to stop loading on error.
   }
+}
 
   useEffect(() => {
     executeOpenAPI();
