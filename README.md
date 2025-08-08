@@ -122,7 +122,7 @@
 
 ## 資料
 
-- [発表資料](./docs/【Aチーム】27E_3daysISワークFMT_プレゼン資料.pdf)
+- [発表資料](./docs/teamA_presentation.pdf)
 - [実際のアプリ画面](./docs/DG-Hakkason.pdf) 
 
 ---
