@@ -1,7 +1,7 @@
 # 📊 アプリペイ活用マーケティング支援アプリ
 
 ## デプロイ先
-[https://dashboard.vercel.app](https://dashboard.vercel.app)
+[https://dashboard.vercel.app](https://dg-hakkason2.vercel.app)
 
 
 このリポジトリは、**デジタルガレージ株式会社の3日間のインターンシップ**で開発した成果物です。  
