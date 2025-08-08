@@ -1,70 +1,124 @@
-# Getting Started with Create React App
+# 📊 アプリペイ活用マーケティング支援アプリ
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+このリポジトリは、**デジタルガレージ株式会社の3日間のインターンシップ**で開発した成果物です。  
+顧客からの「アプリペイの価値向上・販売単価向上に貢献できる仕組みを考えてほしい」という相談をもとに、**要件定義 → 設計 → 開発 → 発表**までを実施しました。
 
-## Available Scripts
+3人チームで役割分担し、UI、フロントエンド、バックエンドに分かれて開発を進めました。
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 👥 チームメンバー
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+| 担当         | GitHub ユーザー名 |
+|--------------|-------------------|
+| UI           | [@yamaharuna](https://github.com/yamaharuna)        |
+| フロントエンド | [@mizzzuno](https://github.com/mizzzuno)          |
+| バックエンド   | [@RAM-lang360](https://github.com/RAM-lang360)        |
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 💡 プロジェクト概要
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+本アプリは、「アプリペイ」のAPIを活用し、マーケティング施策の企画・評価を支援することを目的としています。
 
-### `npm run build`
+### 🔍 目的
+- アプリペイの**価値向上**
+- **競合との差別化**
+- **販売単価の向上**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 📈 このアプリでできること
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. **ユーザーセグメント別の割合推移の可視化**  
+   → ライト・ヘビーユーザーの割合を月ごとに確認
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+2. **課金額の推移分析**  
+   → 各セクション（ユーザー層）ごとの月次課金額
 
-### `npm run eject`
+3. **ユーザーの離脱分析**  
+   → 最終課金日からの経過期間から、離脱傾向の可視化
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. **AIによるマーケティングアドバイス（Gemini）**  
+   - Step1: 分析結果の要約  
+   - Step2: 具体的なマーケティング施策の提案
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## ⚙️ 技術スタック
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### フロントエンド
+- Next.js
+- React
+- JavaScript
+- MUI
 
-## Learn More
+### バックエンド
+- Node.js
+- Gemini（AI）
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### デプロイ
+- フロントエンド: Vercel
+- バックエンド: ngrok
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### その他
+- Cursor
+- GitHub Copilot
+- GitHub
 
-### Code Splitting
+### 🔧 技術選定の理由
+- **フロントエンド:**  
+  開発期間が非常に短く、チーム人数も少なかったため、素早く開発可能なNext.jsを採用。
+- **バックエンド:**  
+  共通言語としてJavaScriptを採用し、理解・連携をしやすくしました。  
+  社内ネットワーク制約により、ngrokを使用して一時的な公開環境を構築しました。
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🧠 工夫した点
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- **実際の開発を意識した構成**  
+  → フロント・バックエンドを分離し、デプロイまで実施  
+  （※最小要件ではローカルで動くフロントのみでもOKとされていた）
 
-### Making a Progressive Web App
+- **ユーザー視点のUI設計**  
+  → 使う人の立場になって設計・調整
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- **拡張性の確保**  
+  → 現在のデータは2024年12月までだが、将来的に最新データにも対応可能な設計に
 
-### Advanced Configuration
+- **チーム開発の工夫**  
+  → 各分野で決定権を明確にしつつ、頻繁な相談でスピード感を持って開発
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 🧩 苦労した点
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- フロントとバックエンド間のデータ整形と受け渡し
+- バックエンドのデプロイ調整（ngrok対応）
+- Git のコンフリクト対応
 
-### `npm run build` fails to minify
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 🔧 今後の改善点
+
+- UIの微調整（余白、色、サイズの統一）
+- セクション分けの**閾値変更機能**（実装予定だったが時間切れ）
+- Geminiプロンプトの調整（出力フォーマットの安定化）
+
+---
+
+## 🗣️ 最終発表でのフィードバック
+
+- 「時間を逆算して最適なアウトプットを出していた」
+- 「リアルに作るこだわりが良い」
+- 「試行錯誤の過程が見える」
+- 「人数が少ない中での努力が伝わった」
+- 「要件定義のヒアリングや根拠の提示ができればさらに良くなる」
+
+---
+
+## 資料
+
+- [発表資料](./docs/【Aチーム】27E_3daysISワークFMT_プレゼン資料.pdf)
+- [実際のアプリ画面](./docs/DG-Hakkason.pdf) 
+
+---
